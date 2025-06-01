@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daffa Aryaputra - Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-logo">PORTOFOLIO</div>
+    <ul>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+ 
+  <header>
+    <img src="img/foto.jpg" alt="Foto Daffa Aryaputra" />
+    <div class="header-text">
+      <h1>Daffa Aryaputra</h1>
+      <p class="title">Teknik Informatika</p>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Halo! Saya Daffa Aryaputra, seorang Mahasiswa Telkom University Teknik Informatika.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill">JavaScript</div>
+      <div class="skill">HTML5</div>
+      <div class="skill">CSS3</div>
+      <div class="skill">UI/UX Design</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <h3>Portfolio Website</h3>
+        <p>Website portfolio responsif menggunakan HTML, CSS, dan JavaScript yang menampilkan proyek dan skill saya.</p>
+        <a href="https://github.com/DaffaAryaputra625" target="_blank">View on GitHub</a>
+      </div>
+      <div class="project">
+        <h3>Blog Platform</h3>
+        <p>Platform blog modern yang menampilkan bisnis saya.</p>
+        <a href="https://daffaaryaputra.blogspot.com/?m=1" target="_blank">View on Blogspot</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form class="contact-form" id="contact-form">
+      <input type="text" name="name" placeholder="Nama" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <textarea name="message" placeholder="Pesan" rows="4" required></textarea>
+      <button type="submit">Kirim Pesan</button>
+    </form>
+  </section>
+
+  <!-- Thank you section (hidden by default) -->
+  <section id="thank-you" class="thank-you" style="display: none;">
+    <h1>🎉 Terima kasih!</h1>
+    <p>Pesan kamu sudah berhasil dikirim.</p>
+    <a href="#" class="back-btn" onclick="location.reload()">Kembali ke Beranda</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Daffa Aryaputra | Connect with me:</p>
+    <p>
+      <a href="https://github.com/DaffaAryaputra625" target="_blank">GitHub</a> |
+      <a href="https://www.linkedin.com/in/daffa-aryaputra-43a8a62b4" target="_blank">LinkedIn</a> |
+      <a href="https://www.instagram.com/putradaffaarya15" target="_blank">Instagram</a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+
+      fetch("https://formsubmit.co/ajax/dapppa55@gmail.com", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success === "true" || data.success === true) {
+          form.style.display = "none";
+          document.getElementById("thank-you").style.display = "block";
+        } else {
+          alert("Terjadi kesalahan saat mengirim. Silakan coba lagi.");
+        }
+      })
+      .catch(error => {
+        alert("Gagal mengirim. Cek koneksi atau email.");
+      });
+    });
+  </script>
+</body>
+</html>
